@@ -1,12 +1,14 @@
 import { ILibrary } from "@/types/type";
 import Image from "next/image";
+import Link from "next/link";
 import { AiFillFire } from "react-icons/ai";
 import { LuClock2 } from "react-icons/lu";
 import { MdStar } from "react-icons/md";
 
 const LibraryCard = ({ library }: { library: ILibrary }) => {
   return (
-    <div className="hover:shadow-lg hover:shadow-gray-300 hover:rounded-xl hover:transform hover:-translate-y-2 hover:duration-300 hover:border-2 hover:border-[#C2F800]">
+    <Link href={`/${library.id}`}
+    className="hover:shadow-lg hover:shadow-gray-300 hover:rounded-xl hover:transform hover:-translate-y-2 hover:duration-300 hover:border-2 hover:border-[#C2F800]">
       <div className="relative w-full h-[250px]">
         <Image
           src={library.image}
@@ -55,7 +57,7 @@ const LibraryCard = ({ library }: { library: ILibrary }) => {
           </p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
