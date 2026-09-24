@@ -1,12 +1,12 @@
 import { ILibrary } from '@/types/type';
 import Image from 'next/image';
-import { MdAddCard } from 'react-icons/md';
-import { RiSaveLine } from 'react-icons/ri';
+import AddTodaysPlanButton from '../libraryDetails/AddTodaysPlanButton';
+import SaveForLetterButton from '../libraryDetails/SaveForLetterButton';
 
 
 const LibraryDetailCard = ({library}: {library: ILibrary}) => {
     return (
-        <div className='container mx-auto grid grid-cols-2 gap-6 my-10'>
+        <div className='container mx-auto grid grid-cols-2 gap-6 mt-10 mb-18'>
             <div className="relative w-full h-[735px]">
                 <Image
                   src={library.image}
@@ -61,9 +61,9 @@ const LibraryDetailCard = ({library}: {library: ILibrary}) => {
                     <li>{library.instructions[3]}</li>
                 </ol>
                 <div className='flex gap-5 w-fit mt-2'>
-                    <button className='bg-[#CCFF00] text-black font-semibold px-4 py-2 rounded-xl cursor-pointer flex items-center gap-1'><MdAddCard className='text-lg'/> Add to today's plan</button>
+                    <AddTodaysPlanButton library={library}/>
 
-                    <button className='border border-gray-500 font-semibold px-4 py-2 rounded-xl cursor-pointer flex items-center gap-1'><RiSaveLine className='text-lg'/> Save for later</button>
+                    <SaveForLetterButton library={library}/>
                 </div>
             </div>
         </div>
