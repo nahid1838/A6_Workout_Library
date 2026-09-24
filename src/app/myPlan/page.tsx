@@ -25,7 +25,7 @@ const MyPlanPage = () => {
 
             <div>
                 <div className='border border-gray-400 px-4 py-3 rounded-2xl w-fit flex gap-6 bg-[#232732]'>
-                    <button>Today's Plan</button>
+                    <button className='border border-gray-400 px-2 py-1 rounded-xl bg-gray-600 font-bold cursor-pointer'>Today's Plan</button>
                     <button>Saved</button>
                 </div>
             </div>
