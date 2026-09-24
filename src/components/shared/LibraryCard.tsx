@@ -6,7 +6,7 @@ import { MdStar } from "react-icons/md";
 
 const LibraryCard = ({ library }: { library: ILibrary }) => {
   return (
-    <div>
+    <div className="hover:shadow-lg hover:shadow-gray-300 hover:rounded-xl hover:transform hover:-translate-y-2 hover:duration-300 hover:border-2 hover:border-[#C2F800]">
       <div className="relative w-full h-[250px]">
         <Image
           src={library.image}
@@ -50,7 +50,7 @@ const LibraryCard = ({ library }: { library: ILibrary }) => {
             {library.caloriesBurned} kcal
           </p>
           <p className="flex items-center gap-1">
-            <MdStar className="text-orange-500" />
+            <MdStar className="text-orange-500 text-xl" />
             {library.rating}
           </p>
         </div>
