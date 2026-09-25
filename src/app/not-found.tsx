@@ -17,7 +17,7 @@ const NotFoundPage = () => {
                 </div>
 
                 <Link href={"/"}
-                className="px-5 py-2.5 font-semibold rounded-lg bg-linear-to-r from-blue-500 to-purple-500 text-white cursor-pointer"
+                className="px-5 py-2.5 font-semibold rounded-lg bg-[#CCFF00] text-black font-semibold"
                 >Go Back!</Link>
             </div>
         </div>
