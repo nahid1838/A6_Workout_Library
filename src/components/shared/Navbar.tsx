@@ -1,17 +1,29 @@
+'use client';
+
 import navLogo from "@/assets/logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import NavPlanAndSave from "./NavPlanAndSave";
+import { usePathname } from "next/navigation";
+import { useContext } from "react";
+import { LibraryContext } from "@/context/LibraryProvider";
 
 const Navbar = () => {
+
+  const {addedTodaysPlan, addedAsSave} = useContext(LibraryContext)
+  const pathname = usePathname();
+
   const links = (
     <>
       <li>
-        <Link href={"/"}>Workouts</Link>
+        <Link href={"/"}
+        className={pathname === "/" ? "text-[#C2F800] font-bold bg-[#1a2312] border border-gray-600" : ""}
+        >Workouts</Link>
       </li>
       <li></li>
       <li>
-        <Link href={"/myPlan"}>My Plan</Link>
+        <Link href={"/myPlan"}
+        className={pathname === "/myPlan" ? "text-[#C2F800] font-bold bg-[#1a2312] border border-gray-600" : ""}
+        >My Plan</Link>
       </li>
     </>
   );
@@ -66,7 +78,17 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <NavPlanAndSave></NavPlanAndSave>
+          <div className="flex gap-5">
+          <Link href={"/myPlan"} className="flex gap-1">
+            <p>Plan</p>
+            <p className="bg-[#C2F800] rounded-full px-2 text-black font-bold">{addedTodaysPlan.length}</p>
+          </Link>
+
+          <Link href={"/myPlan"} className="flex gap-1">
+            <p>Saved</p>
+            <p className="border border-gray-400 rounded-full px-2 font-bold">{addedAsSave.length}</p>
+          </Link>
+        </div>
         </div>
       </div>
     </div>

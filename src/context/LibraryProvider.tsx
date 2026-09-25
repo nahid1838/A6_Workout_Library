@@ -8,25 +8,32 @@ interface ILibraryContext {
     setAddedTodaysPlan: Dispatch<SetStateAction<ILibrary[]>>;
     addedAsSave: ILibrary[];
     setAddedAsSave: Dispatch<SetStateAction<ILibrary[]>>;
+    completedIds: number[];
+    setCompletedIds: Dispatch<SetStateAction<number[]>>;
 }
 
 export const LibraryContext = createContext<ILibraryContext>({
     addedTodaysPlan: [],
     setAddedTodaysPlan: () => {},
     addedAsSave: [],
-    setAddedAsSave: () => {}
+    setAddedAsSave: () => {},
+    completedIds: [],
+    setCompletedIds: () => {}
 })
 
 const LibraryProvider = ({children}: {children: ReactNode}) => {
 
     const [addedTodaysPlan, setAddedTodaysPlan] = useState<ILibrary[]>([]);
     const [addedAsSave, setAddedAsSave] = useState<ILibrary[]>([]);
+    const [completedIds, setCompletedIds] = useState<number[]>([]);
 
     const sharedData = {
         addedTodaysPlan,
         setAddedTodaysPlan,
         addedAsSave,
-        setAddedAsSave
+        setAddedAsSave,
+        completedIds,
+        setCompletedIds
     }
 
     return (

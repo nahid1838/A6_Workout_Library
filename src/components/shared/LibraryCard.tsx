@@ -8,7 +8,7 @@ import { MdStar } from "react-icons/md";
 const LibraryCard = ({ library }: { library: ILibrary }) => {
   return (
     <Link href={`/${library.id}`}
-    className="hover:shadow-lg hover:shadow-gray-300 hover:rounded-xl hover:transform hover:-translate-y-2 hover:duration-300 hover:border-2 hover:border-[#C2F800]">
+    className="hover:shadow-lg hover:shadow-gray-300 hover:rounded-xl hover:transform transition-transform duration-300 ease-out hover:-translate-y-2 hover:duration-300 hover:border-2 hover:border-[#C2F800]">
       <div className="relative w-full h-[250px]">
         <Image
           src={library.image}

@@ -5,7 +5,7 @@ import { IoLogoYoutube } from "react-icons/io";
 
 const Footer = () => {
     return (
-        <div className="mt-15 pb-3 bg-[#222630]">
+        <div className="mt-15 pb-3 bg-[#1B1F28]">
             <hr className="text-gray-500"/>
             <div className="container mx-auto pt-8 pb-10 flex justify-between">
                 <Link href={"/"}

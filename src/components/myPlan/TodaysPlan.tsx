@@ -13,87 +13,150 @@ import { MdStar } from "react-icons/md";
 import { toast } from "react-toastify";
 import TodaysPlanSaveDefaultCard from "../shared/TodaysPlan&SaveDefaultCard";
 
-const TodaysPlan = () => {
 
-  
+const TodaysPlan = ({ data }: { data: ILibrary[] }) => {
 
-  const { addedTodaysPlan, setAddedTodaysPlan } = useContext(LibraryContext);
-  
+
+  const {
+    setAddedTodaysPlan,
+    completedIds,
+    setCompletedIds
+  } = useContext(LibraryContext);
+
 
   return (
     <>
       {
-        addedTodaysPlan.length > 0 ?
+
+        data.length > 0 ?
+
         <div className="space-y-5">
-        {addedTodaysPlan.map((library: ILibrary) => {
+
+          {data.map((library: ILibrary) => {
 
 
-          const handleMarkAsDone = () => {
-            toast.success(`${library.name} Marked as Done`);
-          }
+            const handleMarkAsDone = () => {
 
-          const handleRemoveButton = () => {
-            setAddedTodaysPlan((prev) =>
-               prev.filter((item) => item.id !== library.id)
-            );
-           
-            toast.success(`${library.name} Removed From Today's Plan`);
-          }           ;
+              setCompletedIds((prev) => [
+                ...prev,
+                library.id
+              ]);
 
-          return (
-            <div key={library.id}>
-              <div className="flex flex-col md:flex-row justify-start md:justify-between md:items-center gap-4 md:gap-0 bg-[#232732] px-5 py-4 rounded-2xl mt-5 md:mt-0">
-                <div className="flex items-center gap-3 md:gap-8">
-                  <div className="relative w-[150px] md:w-[180px] h-[85px] md:h-[100px]">
-                    <Image
-                      src={library.image}
-                      alt="Library Image"
-                      fill
-                      className="rounded-xl"
-                    />
-                  </div>
+              toast.success(`${library.name} Marked as Done`);
+            }
 
-                  <div className="space-y-1.5 md:space-y-3">
-                    <div>
-                        <h3 className="text-xl font-bold scale-y-120">{library.name.toUpperCase()}</h3>
+
+            const handleRemoveButton = () => {
+
+              setAddedTodaysPlan((prev) =>
+                prev.filter((item) => item.id !== library.id)
+              );
+
+              toast.success(
+                `${library.name} Removed From Today's Plan`
+              );
+            };
+
+
+            return (
+              <div key={library.id}>
+
+                <div className="flex flex-col md:flex-row justify-start md:justify-between md:items-center gap-4 md:gap-0 bg-[#232732] px-5 py-4 rounded-2xl mt-5 md:mt-0">
+
+                  <div className="flex items-center gap-3 md:gap-8">
+
+                    <div className="relative w-[150px] md:w-[180px] h-[85px] md:h-[100px]">
+
+                      <Image
+                        src={library.image}
+                        alt="Library Image"
+                        fill
+                        sizes="(max-width: 768px) 150px, 180px"
+                        className="rounded-xl"
+                      />
+
+                    </div>
+
+
+                    <div className="space-y-1.5 md:space-y-3">
+
+                      <div>
+
+                        <h3 className="text-xl font-bold scale-y-120">
+                          {library.name.toUpperCase()}
+                        </h3>
+
                         <p>{library.equipment}</p>
+
+                      </div>
+
+
+                      <div className="flex gap-3 md:gap-5 text-[#9CA3AF]">
+
+                        <p className="flex items-center gap-1">
+                          <LuClock2 className="text-white" />
+                          {library.duration} min
+                        </p>
+
+                        <p className="flex items-center gap-1">
+                          <AiFillFire className="text-white" />
+                          {library.caloriesBurned} kcal
+                        </p>
+
+                        <p className="flex items-center gap-1">
+                          <MdStar className="text-orange-500 text-xl" />
+                          {library.rating}
+                        </p>
+
+                      </div>
+
                     </div>
 
-                    <div className="flex gap-3 md:gap-5 text-[#9CA3AF]">
-                      <p className="flex items-center gap-1">
-                        <LuClock2 className="text-white" />
-                        {library.duration} min
-                      </p>
-                      <p className="flex items-center gap-1">
-                        <AiFillFire className="text-white" />
-                        {library.caloriesBurned} kcal
-                      </p>
-                      <p className="flex items-center gap-1">
-                        <MdStar className="text-orange-500 text-xl" />
-                        {library.rating}
-                      </p>
-                    </div>
                   </div>
+
+
+                  <div className="flex gap-4">
+
+                    <Link
+                      href={`/${library.id}`}
+                      className="border border-gray-500 px-3 py-1 rounded-xl cursor-pointer"
+                    >
+                      View Details
+                    </Link>
+
+
+                    {!completedIds.includes(library.id) && (
+
+                      <button
+                        onClick={() => handleMarkAsDone()}
+                        className="bg-[#C2F800] px-3 py-1 rounded-xl cursor-pointer flex items-center gap-1 text-black font-semibold"
+                      >
+                        <GiCheckMark />
+                        Mark as Done
+                      </button>
+
+                    )}
+
+
+                    <span
+                      onClick={() => handleRemoveButton()}
+                      className="text-xl font-bold flex text-gray-400 items-center cursor-pointer"
+                    >
+                      <HiMiniXMark />
+                    </span>
+
+                  </div>
+
                 </div>
 
-                <div className="flex gap-4">
-                  <Link href={`/${library.id}`}
-                  className="border border-gray-500 px-3 py-1 rounded-xl cursor-pointer">
-                    View Details
-                  </Link>
-
-                  <button onClick={()=> handleMarkAsDone()}
-                  className="bg-[#C2F800] px-3 py-1 rounded-xl cursor-pointer flex items-center gap-1 text-black font-semibold"><GiCheckMark /> Mark as Done</button>
-
-                  <span onClick={() => handleRemoveButton()}
-                  className="text-xl font-bold flex text-gray-400 items-center"><HiMiniXMark /></span>
-                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+
         </div>
-        : <TodaysPlanSaveDefaultCard></TodaysPlanSaveDefaultCard>
+
+        : <TodaysPlanSaveDefaultCard />
+
       }
     </>
   );
