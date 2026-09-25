@@ -1,20 +1,40 @@
 "use client";
 
 import { LibraryContext } from "@/context/LibraryProvider";
+import { ILibrary } from "@/types/type";
 import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import { AiFillFire } from "react-icons/ai";
+import { GiCheckMark } from "react-icons/gi";
+import { HiMiniXMark } from "react-icons/hi2";
 import { LuClock2 } from "react-icons/lu";
 import { MdStar } from "react-icons/md";
+import { toast } from "react-toastify";
+import TodaysPlanSaveDefaultCard from "../shared/TodaysPlan&SaveDefaultCard";
 
 const TodaysPlan = () => {
-  const { addedTodaysPlan } = useContext(LibraryContext);
+
+  
+
+  const { addedTodaysPlan, setAddedTodaysPlan } = useContext(LibraryContext);
+  
 
   return (
     <>
-      <div>
-        {addedTodaysPlan.map((library) => {
+      {
+        addedTodaysPlan.length > 0 ?
+        <div className="space-y-5">
+        {addedTodaysPlan.map((library: ILibrary) => {
+
+          const handleRemoveButton = () => {
+            setAddedTodaysPlan((prev) =>
+               prev.filter((item) => item.id !== library.id)
+            );
+           
+            toast.success(`${library.name} Removed From Today's Plan`);
+          }           ;
+
           return (
             <div key={library.id}>
               <div className="flex justify-between items-center bg-[#232732] px-5 py-4 rounded-2xl">
@@ -51,17 +71,24 @@ const TodaysPlan = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="flex gap-4">
                   <Link href={`/${library.id}`}
                   className="border border-gray-500 px-3 py-1 rounded-xl cursor-pointer">
                     View Details
                   </Link>
+
+                  <button className="bg-[#C2F800] px-3 py-1 rounded-xl cursor-pointer flex items-center gap-1 text-black font-semibold"><GiCheckMark /> Mark as Done</button>
+
+                  <span onClick={() => handleRemoveButton()}
+                  className="text-xl font-bold flex text-gray-400 items-center"><HiMiniXMark /></span>
                 </div>
               </div>
             </div>
           );
         })}
-      </div>
+        </div>
+        : <TodaysPlanSaveDefaultCard></TodaysPlanSaveDefaultCard>
+      }
     </>
   );
 };
