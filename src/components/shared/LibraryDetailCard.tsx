@@ -6,8 +6,8 @@ import SaveForLetterButton from '../libraryDetails/SaveForLetterButton';
 
 const LibraryDetailCard = ({library}: {library: ILibrary}) => {
     return (
-        <div className='container mx-auto grid grid-cols-2 gap-6 mt-10 mb-18'>
-            <div className="relative w-full h-[735px]">
+        <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 mb-18'>
+            <div className="relative w-full h-[500px] sm:h-[735px]">
                 <Image
                   src={library.image}
                   alt="Library Image"
@@ -60,7 +60,7 @@ const LibraryDetailCard = ({library}: {library: ILibrary}) => {
                     <li>{library.instructions[2]}</li>
                     <li>{library.instructions[3]}</li>
                 </ol>
-                <div className='flex gap-5 w-fit mt-2'>
+                <div className='flex flex-col sm:flex-row gap-5 w-fit mt-2'>
                     <AddTodaysPlanButton library={library}/>
 
                     <SaveForLetterButton library={library}/>

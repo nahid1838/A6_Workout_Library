@@ -17,7 +17,7 @@ const Navbar = () => {
   );
 
   return (
-    <div>
+    <div className="border-b border-gray-600">
       <div className="container mx-auto navbar bg-base-100 shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
@@ -47,7 +47,8 @@ const Navbar = () => {
               
             </ul>
           </div>
-            <div className="flex items-center gap-1">
+            <Link href={"/"} 
+            className="flex items-center gap-1">
                 <Image
                 src={navLogo}
                 alt="Nav Logo"
@@ -55,7 +56,7 @@ const Navbar = () => {
                 height={30}
                 />
                 <h3 className="text-lg font-bold">FITLOG</h3>
-            </div>
+            </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

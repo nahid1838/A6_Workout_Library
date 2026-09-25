@@ -5,15 +5,15 @@ import { IoLogoYoutube } from "react-icons/io";
 
 const Footer = () => {
     return (
-        <div className="mt-10 mb-3">
+        <div className="mt-15 pb-3 bg-[#222630]">
             <hr className="text-gray-500"/>
             <div className="container mx-auto pt-8 pb-10 flex justify-between">
                 <Link href={"/"}
                 className="text-lg font-bold flex items-center gap-2"><FaDumbbell className="text-2xl font-bold text-[#C2F800]" /> FITLOG</Link>
 
                 <div className="space-y-4 pr-4">
-                    <p className="text-lg font-semibold text-gray-300">SOCIAL MIDEA</p>
-                    <div className="flex gap-4 text-xl cursor-pointer">
+                    <p className="md:text-lg font-semibold text-gray-400">SOCIAL MIDEA</p>
+                    <div className="flex gap-4 md:text-xl cursor-pointer">
                         <span><FaFacebookSquare /></span>
                         <span><IoLogoYoutube /></span>
                         <span><FaInstagramSquare /></span>
@@ -22,8 +22,8 @@ const Footer = () => {
                 </div>
             </div>
             <div className="container mx-auto text-center space-y-3">
-                <hr className="text-gray-500"/>
-                <p className="text-gray-400">© 2026 FitLog — Workout Library. Train hard, log honest.</p>
+                <hr className="text-gray-700"/>
+                <p className="text-gray-400 text-sm">© 2026 FitLog — Workout Library. Train hard, log honest.</p>
             </div>
         </div>
     );

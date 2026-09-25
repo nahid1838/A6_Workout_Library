@@ -42,9 +42,9 @@ const TodaysPlan = () => {
 
           return (
             <div key={library.id}>
-              <div className="flex justify-between items-center bg-[#232732] px-5 py-4 rounded-2xl">
-                <div className="flex items-center gap-8">
-                  <div className="relative w-[180px] h-[100px]">
+              <div className="flex flex-col md:flex-row justify-start md:justify-between md:items-center gap-4 md:gap-0 bg-[#232732] px-5 py-4 rounded-2xl mt-5 md:mt-0">
+                <div className="flex items-center gap-3 md:gap-8">
+                  <div className="relative w-[150px] md:w-[180px] h-[85px] md:h-[100px]">
                     <Image
                       src={library.image}
                       alt="Library Image"
@@ -53,13 +53,13 @@ const TodaysPlan = () => {
                     />
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-1.5 md:space-y-3">
                     <div>
                         <h3 className="text-xl font-bold scale-y-120">{library.name.toUpperCase()}</h3>
                         <p>{library.equipment}</p>
                     </div>
 
-                    <div className="flex gap-5 text-[#9CA3AF]">
+                    <div className="flex gap-3 md:gap-5 text-[#9CA3AF]">
                       <p className="flex items-center gap-1">
                         <LuClock2 className="text-white" />
                         {library.duration} min
