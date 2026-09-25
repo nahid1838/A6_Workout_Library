@@ -1,6 +1,7 @@
 import navLogo from "@/assets/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import NavPlanAndSave from "./NavPlanAndSave";
 
 const Navbar = () => {
   const links = (
@@ -63,13 +64,8 @@ const Navbar = () => {
 
           </ul>
         </div>
-        <div className="navbar-end flex gap-3">
-          <div>
-            <p>Plan</p>
-          </div>
-          <div>
-            <p>Saved</p>
-          </div>
+        <div className="navbar-end">
+          <NavPlanAndSave></NavPlanAndSave>
         </div>
       </div>
     </div>

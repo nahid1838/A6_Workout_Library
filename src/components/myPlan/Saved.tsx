@@ -23,6 +23,11 @@ const Saved = () => {
       <div className="space-y-5">
         {addedAsSave.map((library) => {
 
+
+          const handleMarkAsDone = () => {
+            toast.success(`${library.name} Marked as Done`);
+          }
+
             const handleRemoveButton = () => {
                 setAddedAsSave((prev) =>
                     prev.filter((item) => item.id !== library.id)
@@ -73,7 +78,8 @@ const Saved = () => {
                     View Details
                   </Link>
 
-                  <button className="bg-[#C2F800] px-3 py-1 rounded-xl cursor-pointer flex items-center gap-1 text-black font-semibold"><GiCheckMark /> Mark as Done</button>
+                  <button onClick={()=> handleMarkAsDone()}
+                  className="bg-[#C2F800] px-3 py-1 rounded-xl cursor-pointer flex items-center gap-1 text-black font-semibold"><GiCheckMark /> Mark as Done</button>
 
                   <span onClick={() => handleRemoveButton()}
                   className="text-xl font-bold flex text-gray-400 items-center"><HiMiniXMark /></span>

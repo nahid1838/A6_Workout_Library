@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { FaDumbbell, FaFacebookSquare, FaInstagramSquare, FaLinkedin } from "react-icons/fa";
+import { AiFillTikTok } from "react-icons/ai";
+import { FaDumbbell, FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 
 const Footer = () => {
@@ -16,7 +17,7 @@ const Footer = () => {
                         <span><FaFacebookSquare /></span>
                         <span><IoLogoYoutube /></span>
                         <span><FaInstagramSquare /></span>
-                        <span><FaLinkedin /></span>
+                        <span><AiFillTikTok /></span>
                     </div>
                 </div>
             </div>
