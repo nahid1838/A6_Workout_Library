@@ -8,7 +8,8 @@ const TheLibrary = async() => {
     console.log(libraryes)
 
     return (
-        <div className="container mx-auto my-10">
+        <div id="library"
+        className="container mx-auto my-10">
             <div className="py-7">
                 <h3 className="scale-y-130 font-bold text-2xl">THE LIBRARY</h3>
                 <p>Twelve lifts covering every major muscle group.</p>
